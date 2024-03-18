@@ -3,7 +3,7 @@ import { IoIosInformationCircle } from "react-icons/io";
 
 export default function Home() {
   return (
-    <div className="h-screen w-screen flex gap-20 items-center justify-center bg-black">
+    <div className="h-screen w-screen flex flex-col gap-10 lg:flex-row md:gap-20 items-center justify-center bg-black">
       <CustomTooltip content="This is Top Tooltip">
         <div className="flex items-center gap-2 border bg-gray-200 px-4 cursor-pointer rounded">
           <div>Top</div>
