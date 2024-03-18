@@ -2,32 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* CustomTooltip.css */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.tooltip-content {
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1000;
+  text-wrap: nowrap;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.tooltip-content::after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  display: block;
+  width: 0;
+  z-index: 1001;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Positioning the arrow for each tooltip position */
+.tooltip-content.top::after {
+  bottom: -4px; /* Adjust based on the size of the arrow */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-color: white transparent transparent transparent;
+}
+
+.tooltip-content.right::after {
+  top: 50%;
+  left: -4px; /* Adjust based on the size of the arrow */
+  transform: translateY(-50%);
+  border-width: 5px 5px 5px 0;
+  border-color: transparent white transparent transparent;
+}
+
+.tooltip-content.bottom::after {
+  top: -4px; /* Adjust based on the size of the arrow */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent white transparent;
+}
+
+.tooltip-content.left::after {
+  top: 50%;
+  right: -4px; /* Adjust based on the size of the arrow */
+  transform: translateY(-50%);
+  border-width: 5px 0 5px 5px;
+  border-color: transparent transparent transparent white;
+}
+
+.tooltip-content.top {
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip-content.right {
+  top: 50%;
+  left: 110%;
+  transform: translateY(-50%);
+}
+
+.tooltip-content.bottom {
+  top: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip-content.left {
+  top: 50%;
+  right: 110%;
+  transform: translateY(-50%);
 }
